@@ -3,6 +3,7 @@ from functools import cache
 
 from fastapi import FastAPI
 from redis import Redis, RedisError
+
 app = FastAPI()
 
 
