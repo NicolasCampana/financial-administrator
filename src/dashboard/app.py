@@ -16,7 +16,7 @@ async def index():
     try:
         page_views = redis().incr("page_views")
     except RedisError:
-       return "Sorry, something went wrong."
+        return "Sorry, something went wrong."
     else:
         return {"message": f"Number of Page views {page_views}"}
 

@@ -20,7 +20,7 @@ COPY --chown=webapp tests/ tests/
 
 RUN python -m pip install . -c constraints.txt && \
     python -m pytest tests/unit && \
-    python -m flake8 src/ --check && \
+    python -m flake8 src/ && \
     python -m isort src/ --check && \
     python -m black src/ --check --quiet && \
     python -m pylint src/ --disable=C0114,C0116,R1705 && \
