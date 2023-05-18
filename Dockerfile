@@ -46,4 +46,4 @@ COPY --from=builder /home/webapp/dist/financial*.whl /home/webapp
 RUN python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir financial*.whl
 
-CMD ["uvicorn", "dashboard.app:app"]
+CMD ["uvicorn", "dashboard.app:app", "--host", "0.0.0.0", "--port", "80"]
