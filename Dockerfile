@@ -33,17 +33,17 @@ FROM python:3.11.2-slim-bullseye
 RUN apt-get update && \
     apt-get upgrade --yes
 
-RUN useradd --create-home realpython
-USER realpython
-WORKDIR /home/realpython
+RUN useradd --create-home webapp
+USER webapp
+WORKDIR /home/webapp
 
-ENV VIRTUALENV=/home/realpython/venv
+ENV VIRTUALENV=/home/webapp/venv
 RUN python3 -m venv $VIRTUALENV
 ENV PATH="$VIRTUALENV/bin:$PATH"
 
-COPY --from=builder /home/webapp/dist/page_tracker*.whl /home/webapp
-
+COPY --from=builder /home/webapp/dist/financial*.whl /home/webapp
+RUN echo $(ls .)
 RUN python -m pip install --upgrade pip setuptools && \
-    python -m pip install --no-cache-dir webapp*.whl
+    python -m pip install --no-cache-dir financial*.whl
 
 CMD ["uvicorn", "src.dashboard.app:app"]
