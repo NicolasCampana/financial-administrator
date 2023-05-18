@@ -42,8 +42,8 @@ RUN python3 -m venv $VIRTUALENV
 ENV PATH="$VIRTUALENV/bin:$PATH"
 
 COPY --from=builder /home/webapp/dist/financial*.whl /home/webapp
-RUN echo $(ls .)
+
 RUN python -m pip install --upgrade pip setuptools && \
     python -m pip install --no-cache-dir financial*.whl
 
-CMD ["uvicorn", "src.dashboard.app:app"]
+CMD ["uvicorn", "dashboard.app:app"]
