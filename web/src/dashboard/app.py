@@ -19,7 +19,7 @@ async def index():
     except RedisError:
         return "Sorry, something went wrong."
     else:
-        return {"message": f"Number of Page views {page_views}"}
+        return {"message": f"Number of Page views {page_views}. Let's go!"}
 
 
 @cache
